@@ -1,0 +1,18 @@
+	.section .rodata
+msg:	
+	.word 527
+	.section .text
+	.global main
+main:
+	mov %psw, %r1
+	mov $1, %r2
+	call *getchar(%r7)
+	cmp %r1, %r2
+	jne skip
+	push msg
+	call *printf(%r7)
+	add $4, %sp
+skip:
+	mov $0, %r0
+	pop %pc
+	.end

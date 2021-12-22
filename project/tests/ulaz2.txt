@@ -1,0 +1,19 @@
+.global a,c
+.extern b
+.section .text
+	jeq *a(%pc)
+	jeq *e(%pc)
+	jeq *b(%pc)
+d:   .word d
+	mov %r1, b
+	mov c, %r2
+	mov %r3, e
+.section .data
+.skip 8
+e:   .word a, c, .bss
+a:   .word b
+.section .bss
+.skip 8
+c:   .skip 8
+
+.end

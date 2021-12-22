@@ -1,0 +1,21 @@
+.section .rodata
+msg: .word 423 
+.equ m 19
+.equ x m - 5 + prvi
+.skip 4
+.section .text
+.global main, x 
+.extern val 
+main:
+push %r2
+mov prvi, (%r3)
+call *%r4
+drugi:	
+cmp $15475, val
+jne *m(%pc)
+mov %r5, msg
+call *drugi(%pc)
+prvi:
+mov %r7, drugi
+ret
+.end
